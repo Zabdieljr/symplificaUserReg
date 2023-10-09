@@ -35,7 +35,7 @@ public class User {
         this.email = email;
         this.phone_number = phone_number;
     }
-    //define getters and setters
+    //define getters and setter
 
     public int getId() {
         return id;
