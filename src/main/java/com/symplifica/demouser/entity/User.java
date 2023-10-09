@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table (name="user")
 public class User {
 
-    // define fields
+    // define all fields
     @Id
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
