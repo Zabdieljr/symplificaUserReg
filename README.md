@@ -11,5 +11,5 @@ base de datos. Puedes utilizar cualquier base de datos que consideres adecuada (
 MongoDB, PostgreSQL, MySQL, etc.) para almacenar la información de los usuarios
 registrados
 
-Live WEB CRUD Aplication can be Tested at: http://bezahive.win:8080/users
+Live WEB CRUD Aplication can be Tested at: http://bezahive.win:8080/api/users
 
