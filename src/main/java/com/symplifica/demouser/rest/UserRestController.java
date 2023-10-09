@@ -9,14 +9,11 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping("/api")
 public class UserRestController {
-    //  private UserDAO userDAO; //Now making use of the Service
+
     private UserService userService;
-    //  inject user into user dao for testing! constructor Injection
-    //    public UserRestController(UserDAO theUserDAO){
-    //       userDAO = theUserDAO;
-    //    }
+
 
     public UserRestController(UserService theUserService){
         userService = theUserService;
@@ -30,7 +27,6 @@ public class UserRestController {
     }
 
     // add mapping for GET /user/{userID}
-
     @GetMapping("/users/{userID}")
     public User getUser (@PathVariable int userID){
 
@@ -40,13 +36,32 @@ public class UserRestController {
         }
         return theUser;
     }
-    // add mapping for POST /users - register user
+
     @PostMapping("/users")
             public User addUser (@RequestBody User theUser) {
-        // look out for JSON ID.. set id 0
+        // look out for JSON ID... set id 0
         // force save fo new item ... instead of update
         theUser.setId(0);
         User dbUser = userService.save(theUser);
         return dbUser;
+    }
+    // add mapping for PUT /users -update existing user
+    @PutMapping("/users")
+    public User updateUser(@RequestBody User theUser){
+        User dbUser = userService.save(theUser);
+        return dbUser;
+    }
+    // add mapping for DELETE /users/{userId}
+    @DeleteMapping ("/users/{userId")
+    public String deleteUser (@PathVariable int userId){
+        User tempUser = userService.findById(userId);
+
+        if (tempUser == null){
+            throw new RuntimeException("User Id not Found - " + userId);
+
+        }
+        userService.deleteById((userId));
+        return "Deleted User id - " + userId;
+
     }
 }
