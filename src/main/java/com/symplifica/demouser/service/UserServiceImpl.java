@@ -3,6 +3,7 @@ package com.symplifica.demouser.service;
 import com.symplifica.demouser.dao.UserDAO;
 import com.symplifica.demouser.dao.UserDAOJpaImpl;
 import com.symplifica.demouser.entity.User;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,5 +20,23 @@ public class UserServiceImpl implements UserService{
     @Override
     public List<User> findAll() {
         return userDAO.findAll();
+    }
+
+    @Override
+    public User findById(int theID) {
+
+        return userDAO.findById(theID);
+    }
+
+    @Override
+    @Transactional
+    public User save(User theUser) {
+        return userDAO.save(theUser);
+    }
+
+    @Override
+    @Transactional
+    public void deleteById(int theId) {
+    userDAO.deleteById(theId);
     }
 }

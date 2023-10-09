@@ -34,4 +34,32 @@ public class UserDAOJpaImpl implements UserDAO {
 
         return users;
     }
+
+    @Override
+    public User findById(int theID) {
+        // get user
+        User theUSer = entityManager.find(User.class , theID);
+
+        // return user
+        return theUSer;
+    }
+
+    @Override
+    public User save(User theUser) {
+
+        // save user
+        User dbUser = entityManager.merge(theUser);
+        // return user
+        return dbUser;
+    }
+
+
+    @Override
+    public void deleteById(int theId) {
+        //find the user by id
+        User theUser = entityManager.find(User.class, theId);
+
+        // remove the user
+        entityManager.remove(theUser);
+    }
 }
