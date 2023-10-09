@@ -1,42 +1,48 @@
 package com.symplifica.demouser.service;
 
-import com.symplifica.demouser.dao.UserDAO;
-import com.symplifica.demouser.dao.UserDAOJpaImpl;
+import com.symplifica.demouser.dao.UserRepository;
 import com.symplifica.demouser.entity.User;
-import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
+import java.util.Optional;
+
 @Service
 public class UserServiceImpl implements UserService{
 
-    private UserDAO userDAO;
+    private UserRepository userRepository;
     @Autowired
-    public  UserServiceImpl (UserDAO theUserDAO)
+    public  UserServiceImpl (UserRepository theUserRepository)
     {
-        userDAO = theUserDAO;
+        userRepository = theUserRepository;
     }
     @Override
     public List<User> findAll() {
-        return userDAO.findAll();
+        return userRepository.findAll();
     }
 
     @Override
     public User findById(int theid) {
 
-        return userDAO.findById(theid);
+        Optional<User> result = userRepository.findById(theid);
+        User theUser = null;
+        if(result.isPresent()){
+            theUser =result.get();
+
+        }
+        else {
+            throw new RuntimeException("Did not find user id - " + theid);
+        }
+        return theUser;
     }
 
     @Override
-    @Transactional
     public User save(User theUser) {
-        return userDAO.save(theUser);
+        return userRepository.save(theUser);
     }
 
     @Override
-    @Transactional
     public void deleteById(int theId) {
-    userDAO.deleteById(theId);
+    userRepository.deleteById(theId);
     }
 }

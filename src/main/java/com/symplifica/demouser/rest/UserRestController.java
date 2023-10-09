@@ -1,9 +1,7 @@
 package com.symplifica.demouser.rest;
 
-import com.symplifica.demouser.dao.UserDAO;
 import com.symplifica.demouser.entity.User;
 import com.symplifica.demouser.service.UserService;
-import org.hibernate.boot.model.source.internal.hbm.AttributesHelper;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,8 +11,6 @@ import java.util.List;
 public class UserRestController {
 
     private UserService userService;
-
-
     public UserRestController(UserService theUserService){
         userService = theUserService;
     }
@@ -52,7 +48,7 @@ public class UserRestController {
         return dbUser;
     }
     // add mapping for DELETE /users/{userId}
-    @DeleteMapping ("/users/{userId")
+    @DeleteMapping ("/users/{userId}")
     public String deleteUser (@PathVariable int userId){
         User tempUser = userService.findById(userId);
 
