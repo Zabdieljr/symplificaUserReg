@@ -20,7 +20,7 @@ public class User {
     @Column (name = "email")
     private String email;
     @Column (name = "phone_number")
-    private int phone_number;
+    private long phone_number;
 
 
 
@@ -69,11 +69,11 @@ public class User {
         this.email = email;
     }
 
-    public int getPhone_number() {
+    public long getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(int phone_number) {
+    public void setPhone_number(long phone_number) {
         this.phone_number = phone_number;
     }
 

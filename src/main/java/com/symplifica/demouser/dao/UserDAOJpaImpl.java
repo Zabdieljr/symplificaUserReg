@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public class UserDAOJpaImpl implements UserDAO {
 
-    // define field for Entitymanager
+    // define field for Entity-manager
 
     private EntityManager entityManager;
 
