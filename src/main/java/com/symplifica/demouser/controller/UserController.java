@@ -43,7 +43,7 @@ public UserController(UserService theUserService)
 	// get the employee
 	User theUser= userService.findById(theId);
 	// set the employee int the model to populate the form
-	theModel.addAttribute("employee", theUser);
+	theModel.addAttribute("user", theUser);
 
 	// send over to our form
 	return "users/user-form";
@@ -52,8 +52,8 @@ public UserController(UserService theUserService)
 	public String delete (@RequestParam("userId")int theId){
 	// delete the user
 		userService.deleteById(theId);
-	// redirect to the employees/list
-		return "redirect:/Users/list";
+	// redirect to the user/list
+		return "redirect:/users/list";
 
 	}
 
