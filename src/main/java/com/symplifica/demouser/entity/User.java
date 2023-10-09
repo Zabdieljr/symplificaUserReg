@@ -24,7 +24,7 @@ public class User {
 
 
 
-    // define constructors
+    // define all constructors
 
     public User() {
     }
