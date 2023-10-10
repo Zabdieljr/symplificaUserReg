@@ -2,6 +2,8 @@ package com.symplifica.demouser.entity;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -27,8 +29,11 @@ public class User {
     @Size(min=1, message = "Email is required ")
     @Column (name = "email")
     private String email;
+
+    @Min(value = 999999999, message = "telephone number cannot contain more or less than 10 digits")
+    //@Max(value = 999999999, message = "telephone number cannot contain more or less than 10 digits")
     @Column (name = "phone_number")
-    private long phone_number=1112223333;
+    private long phone_number=0;
 
     @NotNull(message = "Password is required ")
     @Size(min=1, message = "Password is required ")

@@ -60,6 +60,10 @@
         <span th:if="${#fields.hasErrors('password')}"
               th:errors="*{password}"
               class="error"></span>
+        <!-- Reg Error Message (If Phone# Length) -->
+        <span th:if="${#fields.hasErrors('phone_number')}"
+              th:errors="*{phone_number}"
+              class="error"></span>
 
 
         <button type="submit" class="btn btn-info col2">Register</button>
