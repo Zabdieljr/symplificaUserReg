@@ -2,7 +2,7 @@
 User Registration Form SpringBoot/VEU.js
 
 Frontend: Construye la interfaz de usuario del formulario de registro y la página de
-visualización de usuarios usando Angular. Asegúrate de que el formulario valide los campos de
+visualización de usuarios usando VUE.js. Asegúrate de que el formulario valide los campos de
 entrada y envíe los datos al backend utilizando una API REST.
 
 Backend: Desarrolla el servidor backend utilizando Springboot. Implementa las rutas
