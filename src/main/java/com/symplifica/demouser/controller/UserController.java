@@ -4,16 +4,25 @@ import com.symplifica.demouser.entity.User;
 import com.symplifica.demouser.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @Controller
 @RequestMapping("/users")
 public class UserController {
+	// add an initbinder ... to convert trim imput strings
+	@InitBinder
+	public void	initBinder(WebDataBinder dataBinder){
+		StringTrimmerEditor stringTrimmerEditor = new StringTrimmerEditor(true);
+		dataBinder.registerCustomEditor(String.class , stringTrimmerEditor);
+	}
+	// remove leading and trailing whitespace
+	// resolve issue for our validation
 private UserService userService;
 @Autowired
 public UserController(UserService theUserService)
@@ -81,6 +90,7 @@ public UserController(UserService theUserService)
 	@PostMapping ("/processForm")
 			public String processForm(@Valid @ModelAttribute("user") User theUser,
 									  BindingResult theBindingResult)
+
 		{
 			if (theBindingResult.hasErrors()){
 				return "users/user-regform";
