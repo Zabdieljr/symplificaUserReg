@@ -2,10 +2,7 @@ package com.symplifica.demouser.entity;
 
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Max;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
 
 
 @Entity
@@ -17,10 +14,13 @@ public class User {
     @GeneratedValue (strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private int id;
+
+    @Pattern(regexp = "^[a-zA-Z]{3,12}$" , message = "Names Should Only Contain Characters")
     @Column (name = "first_Name")
     private String firstName;
 
     @NotNull(message = "Last Name is required ")
+    @Pattern(regexp = "^[a-zA-Z]{3,12}$" , message = "Names Only Allow Characters")
     @Size(min=1, message = "Last Name is required ")
     @Column (name = "last_Name")
     private String lastName;
@@ -30,10 +30,10 @@ public class User {
     @Column (name = "email")
     private String email;
 
-    @Min(value = 999999999, message = "telephone number cannot contain more or less than 10 digits")
-    //@Max(value = 999999999, message = "telephone number cannot contain more or less than 10 digits")
+
+    @Pattern(regexp = "^[0-9]{10}" , message = "Telephone nust be 10 Digits")
     @Column (name = "phone_number")
-    private long phone_number=0;
+    private String phone_number;
 
     @NotNull(message = "Password is required ")
     @Size(min=1, message = "Password is required ")
@@ -48,7 +48,7 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, int phone_number,String password) {
+    public User(String firstName, String lastName, String email, String phone_number,String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -97,11 +97,11 @@ public class User {
         this.email = email;
     }
 
-    public long getPhone_number() {
+    public String getPhone_number() {
         return phone_number;
     }
 
-    public void setPhone_number(long phone_number) {
+    public void setPhone_number(String phone_number) {
         this.phone_number = phone_number;
     }
 
