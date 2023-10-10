@@ -21,6 +21,8 @@ public class User {
     private String email;
     @Column (name = "phone_number")
     private long phone_number=1112223333;
+    @Column (name = "password")
+    private String password;
 
 
 
@@ -30,13 +32,18 @@ public class User {
     public User() {
     }
 
-    public User(String firstName, String lastName, String email, int phone_number) {
+    public User(String firstName, String lastName, String email, int phone_number,String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone_number = phone_number;
+        this.password = password;
     }
     //define getters and setter
+
+    public String getPassword() {
+        return password;
+    }
 
     public int getId() {
         return id;
@@ -56,6 +63,10 @@ public class User {
 
     public String getLastName() {
         return lastName;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public void setLastName(String lastName) {
@@ -89,6 +100,7 @@ public class User {
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", phone_number=" + phone_number +
+                ", password='" + password + '\'' +
                 '}';
     }
 }
