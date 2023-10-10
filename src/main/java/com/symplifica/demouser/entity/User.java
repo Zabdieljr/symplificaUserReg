@@ -35,7 +35,7 @@ public class User {
     @Pattern(regexp = "^[0-9]{10}" , message = "Telephone nust be 10 Digits")
     @Column (name = "phone_number")
     private String phone_number;
-
+    @Pattern(regexp = "^((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,15})" , message = "Password Length is at least 6 digits and contain at leat least one digit, one upper case letter, one lower case letter and one special symbol")
     @NotNull(message = "Password is required ")
     @Size(min=1, message = "Password is required ")
     @Column (name = "password")
