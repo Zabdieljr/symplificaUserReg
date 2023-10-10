@@ -20,7 +20,8 @@ public class User {
     @Column (name = "email")
     private String email;
     @Column (name = "phone_number")
-    private long phone_number;
+    private long phone_number=1112223333;
+
 
 
 

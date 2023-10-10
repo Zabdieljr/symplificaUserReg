@@ -28,17 +28,17 @@ public class UserServiceImpl implements UserService {
 	public User findById(int theId) {
 		Optional<User> result = userRepository.findById(theId);
 		
-		User theEmployee = null;
+		User theUser = null;
 		
 		if (result.isPresent()) {
-			theEmployee = result.get();
+			theUser = result.get();
 		}
 		else {
 			// we didn't find the employee
-			throw new RuntimeException("Did not find employee id - " + theId);
+			throw new RuntimeException("Did not find user id - " + theId);
 		}
 		
-		return theEmployee;
+		return theUser;
 	}
 
 	@Override

@@ -18,11 +18,17 @@ public UserController(UserService theUserService)
 {
 	userService = theUserService;
 }
-
+	@GetMapping("/showFormForReg")
+	public String showFormForReg(Model theModel){
+		// create model attribute to bind form data 1
+		User theUser = new User();
+		theModel.addAttribute("user" , theUser);
+		return "users/user-regform";
+	}
 	// add mapping for "/list"
 
 	@GetMapping("/list")
-	public String listEmployees(Model theModel) {
+	public String listUsers(Model theModel) {
 		List<User> theUsers = userService.findAll();
 
 		// add to the spring model
@@ -40,9 +46,9 @@ public UserController(UserService theUserService)
 
 	@GetMapping ("/showFormForUpdate")
 	public String showFormForUpdate(@RequestParam("userId") int theId, Model theModel){
-	// get the employee
+	// get the user
 	User theUser= userService.findById(theId);
-	// set the employee int the model to populate the form
+	// set the user int the model to populate the form
 	theModel.addAttribute("user", theUser);
 
 	// send over to our form
