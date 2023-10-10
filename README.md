@@ -14,3 +14,5 @@ registrados
 Live WEB CRUD Aplication can be Tested at: http://bezahive.win:8080
 
 Data REST Api can be accesed at http://bezahive.win:8080/symplifica-api/users
+<img width="260" alt="image" src="https://github.com/Zabdieljr/symplificaUserReg/assets/101516536/d0eebb47-d4b2-4b71-8702-3193c16ec943">
+
