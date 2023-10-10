@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns th="http://www.thymeleaf.org" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>User Registration Confirmation</title>
+</head>
+<body>
+<div class="jumbotron text-center" align="center">
+the User registration is confirmed:
+            <h3>Registration Details</h3>
+            <span th:text="${user.firstName + '  ' + user.lastName}"/>
+
+</div>
+
+
+
+
+<br>
+<div class="container" align="center">
+<a th:href="@{/users/list}" class="btn btn-default" role="button">User List</a>
+</div>
+</body>
+</html>

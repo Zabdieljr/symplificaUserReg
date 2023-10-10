@@ -2,9 +2,11 @@ package com.symplifica.demouser.controller;
 
 import com.symplifica.demouser.entity.User;
 import com.symplifica.demouser.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +25,7 @@ public UserController(UserService theUserService)
 		// create model attribute to bind form data 1
 		User theUser = new User();
 		theModel.addAttribute("user" , theUser);
+
 		return "users/user-regform";
 	}
 	// add mapping for "/list"
@@ -65,15 +68,29 @@ public UserController(UserService theUserService)
 
 
 
-@PostMapping("/save")
+	@PostMapping("/save")
 	public String saveUser(@ModelAttribute ("user")User theUser)
 	{
-		// save the employee
+		// save the user
 			userService.save(theUser);
 		// use a redirect to prevent duplicate submissions
 			return "redirect:/users/list";
 
 	}
+
+	@PostMapping ("/processForm")
+			public String processForm(@Valid @ModelAttribute("user") User theUser,
+									  BindingResult theBindingResult)
+		{
+			if (theBindingResult.hasErrors()){
+				return "users/user-regform";
+			}
+			else {
+				userService.save(theUser);
+				return "users/user-confirmation";
+			}
+		}
+
 
 }
 

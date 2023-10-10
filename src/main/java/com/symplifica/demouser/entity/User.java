@@ -1,6 +1,10 @@
 package com.symplifica.demouser.entity;
 
+
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+
 
 @Entity
 @Table (name="user")
@@ -14,13 +18,20 @@ public class User {
     @Column (name = "first_Name")
     private String firstName;
 
+    @NotNull(message = "Last Name is required ")
+    @Size(min=1, message = "Last Name is required ")
     @Column (name = "last_Name")
     private String lastName;
 
+    @NotNull(message = "Email is required ")
+    @Size(min=1, message = "Email is required ")
     @Column (name = "email")
     private String email;
     @Column (name = "phone_number")
     private long phone_number=1112223333;
+
+    @NotNull(message = "Password is required ")
+    @Size(min=1, message = "Password is required ")
     @Column (name = "password")
     private String password;
 
