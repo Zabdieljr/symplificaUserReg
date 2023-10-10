@@ -25,7 +25,7 @@ public class User {
     @Column (name = "last_Name")
     private String lastName;
 
-    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]{4,22}$" , message = "Email must be in sample@sample.com format")
+    @Pattern(regexp = "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]{4,22}$" , message = "Email must be sample@sample.com format")
     @NotNull(message = "Email is required ")
     @Size(min=1, message = "Email is required ")
     @Column (name = "email")
