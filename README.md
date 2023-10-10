@@ -1,5 +1,5 @@
 # symplificaUserReg
-User Registration Form SpringBoot/Angular
+User Registration Form SpringBoot/VEU.js
 
 Frontend: Construye la interfaz de usuario del formulario de registro y la página de
 visualización de usuarios usando Angular. Asegúrate de que el formulario valide los campos de
